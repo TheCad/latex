@@ -1,0 +1,41 @@
+\documentclass{tufte-book}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{xifthen}
+
+\newenvironment{loggentry}[2]% date, heading
+{\noident\textbf{#2}\marginnote{#1}\par}{\vspace{0.5cm}}
+
+\def\?#1{}
+
+\pgfmathtruncatemacro{\StartYear}{2022}
+\pgfmathtruncatemacro{\EndYear}{2023}
+
+\newcommand{\writetitle}{0}
+\newcommand{\mytitle}[1]
+{   \ifthenelse{\writetitle=1}{#1}{}
+}
+
+\newread\mysource
+
+\begin{document}
+\foreach \Year in {\StartYear,...,\EndYear}
+{   \foreach \Month in             {Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec}
+    {   \foreach \Day in {1,...,31}
+        {   \IfFileExists{\Year/\Month/\Day}
+                {   \openin\mysource=\Year/\Month/\Day.tex
+                    \read\mysource to \firstline
+                    \closein\mysource
+                    \xdef\writetitle{1}
+                    \begin{loggentry}{\Day - \Month - \Year}{\firstline}    
+                        \xdef\writetitle{0}
+                        \input{\Year/\Month/\Day}
+                    \end{loggentry} 
+                }
+            }
+        {   % files does not exist, so nothing to do
+        }
+    }  
+}
+
+\end{document}

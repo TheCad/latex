@@ -1,0 +1,62 @@
+\documentclass[11pt, a4paper, titlepage, draft]{scrartcl}
+
+\usepackage{graphicx, caption}
+\usepackage{lipsum}
+\usepackage[
+    backend=biber,
+    style=apa
+]{biblatex}
+
+\addbibresource{Bronnen.bib}
+
+\graphicspath{ {Images/} }
+
+% Set reference to go on the left of the item
+\captionsetup{singlelinecheck = false, format = hang, justification = raggedright, font = footnotesize, labelsep = space}
+
+\titlehead{Stagebegeleider: Dennis Breuker \\ Assessor: Jille Berends}
+\title{Stageverslag Kropman}
+\subtitle{HAN University of Applied Sciences}
+\author{Marco Beijen - 599034 \\ Profiel: Softwaredevelopment \\ Versie: 0.1}
+
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \pagebreak
+    
+    \section{Inleiding}
+    \input{Paginas/1-Inleiding}
+    \pagebreak
+    
+    \section{Bedrijfsbeschrijving}
+    \input{Paginas/2-Bedrijfsbeschrijving}
+    \pagebreak
+    
+    % Beroeps producten
+    \section{Beroepsproduct: Gereedschap aanvragen}
+    \input{Paginas/Beroepsproducten/GereedschapAanvraag}
+    
+    \section{Beroepsproduct: Rapportage systeem}
+    \input{Paginas/Beroepsproducten/Rapportage}
+    \pagebreak
+    % End Beroeps producten
+    
+    \section{Reflectie}
+    \input{Paginas/3-Reflectie}
+    \pagebreak
+    
+    \section{Conclusie en aanbevelingen}
+    \input{Paginas/4-Conclusie}
+    \pagebreak
+    
+    \section{Bronnenlijst}
+    \input{Paginas/5-Bronnen}
+    \pagebreak
+    
+    \section{Bijlage}
+    \input{Paginas/6-Bijlagen}
+    
+\end{document}
